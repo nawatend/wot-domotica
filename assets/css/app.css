@@ -1,0 +1,100 @@
+:root {
+    --open: green;
+    --close: rgb(243, 47, 47);
+    --door-open: var(--open);
+    --door-close: var(--close);
+    --light-on: rgb(255, 215, 57);
+    --light-off: rgb(133, 112, 31);
+    --outlet-on: rgb(141, 255, 246);
+    --outlet-off: rgb(67, 122, 141);
+}
+
+.wrapper {
+    width: 90%;
+
+    margin: 0 auto;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#domotica__grid {
+    max-width: 400px;
+}
+
+.grid__container {
+
+    width: 400px;
+    height: 400px;
+    background-color: rgb(238, 39, 72);
+
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+
+}
+
+
+.grid__box {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(199, 207, 206);
+    border: 2px solid rgb(238, 235, 235);
+    box-sizing: border-box;
+}
+
+.grid__box:hover {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgb(246, 246, 246);
+    box-sizing: border-box;
+}
+
+.grid__selected {
+    background-color: rgb(238, 105, 171);
+}
+
+
+
+.actions__container {
+
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+
+.light-on {
+    background-color: var(--light-on) !important;
+}
+
+.light-off {
+    background-color: var(--light-off);
+}
+
+.outlet-on {
+    background-color: var(--outlet-on) !important;
+}
+
+.outlet-off {
+    background-color: var(--outlet-off);
+}
+
+.door-on {
+    background-color: var(--door-open) !important;
+}
+
+.door-off {
+    background-color: var(--door-close);
+}
+
+.remove {
+    display: none
+}
