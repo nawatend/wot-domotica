@@ -17,7 +17,6 @@ let content = document.getElementById("content")
 
 
 let generateGrid = () => {
-
     let gridContainer = document.getElementById('gridContainer')
 
     if (gridContainer) {
@@ -29,58 +28,6 @@ let generateGrid = () => {
     }
 }
 
-
-let generateRandomCharacter = () => {
-
-    let x = [0, 0, 0]
-    let randomColor = [genRandomColor(), genRandomColor(), genRandomColor()]
-
-    let newChar = [
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-        x, x, x, x, x, x, x, x,
-    ]
-
-
-    for (let i = 0; i < 8; i++) {
-
-        for (let j = 0; j < 4; j++) {
-
-            let randomIsLightOn = Math.floor(Math.random() * 2)
-
-            if (randomIsLightOn === 0) {
-                newChar[i * 8 + j] = x
-                newChar[i * 8 + Math.abs(j - 7)] = x
-
-            } else {
-                newChar[i * 8 + j] = randomColor
-                newChar[i * 8 + Math.abs(j - 7)] = randomColor
-            }
-        }
-    }
-
-
-    console.log(JSON.stringify(newChar))
-
-    return newChar
-
-
-}
-
-
-//addNewCharacter(generateRandomCharacter())
-
-
-let clearGrid = () => {
-    Array.from(boxes).forEach(box => {
-        box.classList.remove('grid__selected')
-    });
-}
 
 
 //execute all functions here
@@ -221,19 +168,17 @@ let getSettingFromFB = () => {
 getSettingFromFB()
 
 if (btnTurnOnAll) {
-
     btnTurnOnAll.addEventListener("click", () => {
         boxes.forEach(box => {
-            (box.classList.contains("door-off")) ? box.classList.add("door-on"): console.log("next");
-            (box.classList.contains("light-off")) ? box.classList.add("light-on"): console.log("next");
-            (box.classList.contains("outlet-off")) ? box.classList.add("outlet-on"): console.log("next");
+            (box.classList.contains("door-off")) ? box.classList.add("door-on"): '';
+            (box.classList.contains("light-off")) ? box.classList.add("light-on"): '';
+            (box.classList.contains("outlet-off")) ? box.classList.add("outlet-on"): '';
         });
         updateDomotica()
     })
 }
 
 if (btnTurnOffAll) {
-
     btnTurnOffAll.addEventListener("click", () => {
         boxes.forEach(box => {
             (box.classList.contains("door-on")) ? box.classList.remove("door-on"): (box.classList.contains("light-on")) ? box.classList.remove("light-on") :
