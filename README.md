@@ -1,5 +1,7 @@
 # Project Domotica
 
+####  SmartHome application that allows an authenticated visitor (client) to send and/or read devices. The client runs on GitHub pages and uses Google Firebase . The Raspberry Pi runs a program that can anticipate changes within Google Firebase Firestore/Firebase RealTime Database.
+
 # Frontend
 * https://nawatend.github.io/wot-domotica/
 
@@ -7,7 +9,6 @@
 * n@gmail.com
 * 123456
 
-####  SmartHome application that allows an authenticated visitor (client) to send and/or read devices. The client runs on GitHub pages and uses Google Firebase . The Raspberry Pi runs a program that can anticipate changes within Google Firebase Firestore/Firebase RealTime Database.
 
 ## Additional functionalities:
 
