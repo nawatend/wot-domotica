@@ -98,3 +98,39 @@
 .remove {
     display: none
 }
+
+
+.light__icon--off {
+    background-image: url("../light.svg");
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}
+
+.light__icon--on {
+    background-image: url("../light_on.svg") !important;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}
+
+.outlet__icon {
+    background-image: url("../outlet.svg");
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}
+
+.door__icon--on {
+    background-image: url("../door_on.svg") !important;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}
+
+.door__icon--off {
+    background-image: url("../door_off.svg");
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}

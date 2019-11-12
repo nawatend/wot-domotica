@@ -30,23 +30,6 @@ let generateGrid = () => {
 }
 
 
-let generateId = () => {
-    return '-' + Math.random().toString(32).substr(2, 5);
-}
-
-let addNewCharacter = (charArrColors) => {
-
-    let customName = `custom${generateId()}`
-    let ref = database.ref("characters/saved/" + customName).set(JSON.stringify(charArrColors))
-
-}
-
-
-let genRandomColor = () => {
-
-    return Math.floor(Math.random() * 256);
-}
-
 let generateRandomCharacter = () => {
 
     let x = [0, 0, 0]
@@ -131,15 +114,18 @@ let backdoor = [47, 55, 63]
 //lights
 lights.forEach(light => { //
     boxes[light].classList.add("light-off")
+    boxes[light].classList.add("light__icon--off")
     boxes[light].addEventListener("click", () => {
         boxes[light].classList.toggle("light-on")
         // light.classList.add("yellow-dark")
+        boxes[light].classList.toggle("light__icon--on")
     })
 });
 
 //outlets
 outlets.forEach(outlet => {
     boxes[outlet].classList.add("outlet-off")
+    boxes[outlet].classList.add("outlet__icon")
     boxes[outlet].addEventListener("click", () => {
         boxes[outlet].classList.toggle("outlet-on")
     })
@@ -150,9 +136,12 @@ outlets.forEach(outlet => {
 
 frontdoor.forEach(frontdoorBox => {
     boxes[frontdoorBox].classList.add("door-off")
+
+    boxes[frontdoorBox].classList.add("door__icon--off")
     boxes[frontdoorBox].addEventListener("click", () => {
         frontdoor.forEach(frontdoorBox => {
             boxes[frontdoorBox].classList.toggle("door-on")
+            boxes[frontdoorBox].classList.toggle("door__icon--on")
         });
     })
 });
@@ -161,9 +150,11 @@ frontdoor.forEach(frontdoorBox => {
 
 backdoor.forEach(backdoorBox => {
     boxes[backdoorBox].classList.add("door-off")
+    boxes[backdoorBox].classList.add("door__icon--off")
     boxes[backdoorBox].addEventListener("click", () => {
         backdoor.forEach(backdoorBox => {
             boxes[backdoorBox].classList.toggle("door-on")
+            boxes[backdoorBox].classList.toggle("door__icon--on")
         });
     })
 })
@@ -254,10 +245,14 @@ if (btnTurnOffAll) {
 }
 
 
+// buffers automatically when created
+let alarmSound = new Audio("../../pi/alarm.wav")
 
 if (btnAlarm) {
     btnAlarm.addEventListener("click", () => {
         database.ref("alarm").set(true)
+        //play sound
+        alarmSound.play()
 
         btnAlarm.classList.toggle("remove")
         btnStopAlarm.classList.toggle("remove")
@@ -281,6 +276,9 @@ alarm.on("value", (snapshot) => {
 if (btnStopAlarm) {
     btnStopAlarm.addEventListener("click", () => {
         database.ref("alarm").set(false)
+        //stop sound
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
         let idInterval = localStorage.getItem("idInterval")
         clearInterval(idInterval)
 
